@@ -1,0 +1,10 @@
+python train.py --data_dir data/aol/full --spm unigram/64 --sample -1 0.2 --ninp 100 --nhid 300 --nlayers 1 --max_seq_len 20
+
+python generate.py --spm unigram/64  --do_merge --model_dir "./models/unigram/64/"
+
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+
+python split.py --tag full  --train_start "2006-03-01 00:00:00" --train_end "2006-03-01 00:15:00" \
+                              --valid_start "2006-03-01 00:15:00" --valid_end "2006-03-01 00:20:00" \
+                              --test_start  "2006-03-01 00:20:00" --test_end  "2006-03-01 00:25:00"
